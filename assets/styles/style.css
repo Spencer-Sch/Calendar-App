@@ -37,6 +37,44 @@ h3 {
     background-color:oldlace;
 }
 
+.modal {
+    display: block;
+    z-index: 100;
+    border: solid 1px black;
+    width: 90%;
+    background-color: lightcyan;
+    padding: 0.4em;
+    margin: 0.4em auto;
+}
+
+.modal-sub-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* overflow: hidden; */
+    width: 100%;
+}
+
+#input-event-name {
+    outline: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+#input-event-info {
+    width: 100%;
+    outline: none;
+    resize: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.modal-button {
+    width: 100%;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
 #calendar-header {
     display: flex;
     justify-content: center;
@@ -62,8 +100,6 @@ h3 {
     border-bottom: solid 2px lightseagreen;
 }
 
-
-
 .calendar-row {
     display: flex;
     justify-content: space-around;
@@ -86,6 +122,10 @@ h3 {
     width: 100%;
     padding: 0.2em;
     background-color: rgb(226, 211, 182);
+}
+
+.day-label:hover {
+    background-color: rgb(189, 172, 136);
 }
 
 .day-events {

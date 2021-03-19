@@ -11,3 +11,8 @@ Day 1
 Day 2
 * Worked on building classes for each 'event' and 'day'.
     * Still working at understanding and increasing comfort with classes and OOP.
+* Built logic to render a modal for inputting event data.
+    * completed logic so that clicking a day will render a modal under that day.
+    * completed logic so that clicking a day will close a currently rendered modal under that day.
+    * completed logic so only one modal can be rendered at a time.
+    * complted logic where activating a modal, while a modal is currently open on another day, will close the previous modal and open a modal on the newly selected day.
