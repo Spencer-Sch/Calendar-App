@@ -7,3 +7,7 @@ Day 1
     * I'm planning to generate a lot of the HTML in the JavaScript file so index.html will be pretty bare.
 * Built out initial CSS.
     * Working to get CSS classes in place so they can be applied to generated HTML elements in the JavaScript.
+
+Day 2
+* Worked on building classes for each 'event' and 'day'.
+    * Still working at understanding and increasing comfort with classes and OOP.
