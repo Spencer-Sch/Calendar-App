@@ -7,35 +7,36 @@ class CalendarDay {
         this.dayNum = dayNum;
         this.month = monthName;
         this.year = year;
-        this.id = `${this.year}-${this.month}-${this.dayNum}`;
+        this.dayId = `${this.year}-${this.month}-${this.dayNum}`;
+        this.eventIdNum = 1;
     }
 
     renderDayEl() {
         const dayEl = document.createElement('li');
         dayEl.className = 'day';
-        dayEl.id = `${this.id}-el`
+        dayEl.id = `${this.dayId}-el`
         dayEl.innerHTML = `
-            <div id="${this.id}-label" class="day-label">
+            <div id="${this.dayId}-label" class="day-label">
                 <h2>${this.dayName}</h2>
                 <h2>${this.month} ${this.dayNum}, ${this.year}</h2>
             </div>
             <div class="day-events">
-                <ul id="${this.id}-event" class="event-ul"></ul>
+                <ul id="${this.dayId}-event" class="event-ul"></ul>
             </div>
         `;
         document.getElementById('calendar-body').appendChild(dayEl);
 
-        const dayElement = document.getElementById(`${this.id}-label`);
+        const dayElement = document.getElementById(`${this.dayId}-label`);
         dayElement.addEventListener('click', this.renderAddEventWindow);
     }
 
     renderAddEventWindow = () => {
         if (!addEventWindowOpen) {
             addEventWindowOpen = true;
-            addEventWindowId = `${this.id}`;
+            addEventWindowId = `${this.dayId}`;
             const addEventWindowEl = document.createElement('div');
             addEventWindowEl.className = 'add-event-window';
-            addEventWindowEl.id = `${this.id}`;
+            addEventWindowEl.id = `${this.dayId}`;
             addEventWindowEl.innerHTML = `
                 <div class="add-event-window-sub-div">
                     <label for="input-event-name">Event Name</label>
@@ -46,21 +47,21 @@ class CalendarDay {
                     <textarea id="input-event-info" rows="10" ></textarea>
                 </div>
                 <div class="add-event-window-sub-div">
-                    <button class="add-event-window-button-${this.id}">Add Event</button>
+                    <button class="add-event-window-button-${this.dayId}">Add Event</button>
                 </div>
             `;
-            const selectedDay = document.getElementById(`${this.id}-el`);
+            const selectedDay = document.getElementById(`${this.dayId}-el`);
             selectedDay.insertBefore(addEventWindowEl, selectedDay.firstElementChild.nextSibling);
 
-            const addEventWindowBtn = document.querySelector(`.add-event-window-button-${this.id}`);
+            const addEventWindowBtn = document.querySelector(`.add-event-window-button-${this.dayId}`);
             addEventWindowBtn.addEventListener('click', this.getEventInfo);
         } else if (addEventWindowOpen) {
-            this.closeAddEventWindow(this.id);
+            this.closeAddEventWindow(this.dayId);
         }
     }
 
     closeAddEventWindow = (id) => {
-        // if the addEventWindow is open inside of this event day then close window using this.id
+        // if the addEventWindow is open inside of this event day then close window using this.dayId
             if (addEventWindowId === id) {
                 const addEventWindowBtn = document.querySelector(`.add-event-window-button-${id}`);
                 addEventWindowBtn.removeEventListener;
@@ -79,7 +80,7 @@ class CalendarDay {
     getEventInfo = () => {
         const eventName = document.getElementById('input-event-name').value;
         const eventDescription = document.getElementById('input-event-info').value;
-        // on 'Submit' pass this.id, eventName, eventDescription to CalendarEvent.renderEventEl()
+        // on 'Submit' pass this.dayId, eventName, eventDescription to CalendarEvent.renderEventEl()
         const newEvent = new CalendarEvent(this.dayName, this.dayNum, this.month, this.year);
         newEvent.renderEventEl(eventName, eventDescription);
     }
@@ -88,20 +89,34 @@ class CalendarDay {
 class CalendarEvent extends CalendarDay {
     constructor(dayName, dayNum, monthName, year) {
         super(dayName, dayNum, monthName, year);
-        // this.eventName = eventName;
-        // this.eventInformation = eventInfo;
     }
 
     renderEventEl(eventName, eventInfo) {
+        console.log(this.eventIdNum);
         const eventEl = document.createElement('li');
+        eventEl.id = `${this.dayId}-${this.eventIdNum}`;
+        this.eventIdNum++;
         eventEl.className = 'event-li';
         eventEl.innerHTML = `
+        <div>
             <h3>${eventName}</h3>
             <p>${eventInfo}</p>
+        </div>
+        <div id="delete-icon">
+            <i class="fas fa-2x fa-trash-alt"></i>
+        </div>
         `;
-        document.getElementById(`${this.id}-event`).appendChild(eventEl);
+        document.getElementById(`${this.dayId}-event`).appendChild(eventEl);
+        const deleteBtn = document.getElementById('delete-icon');
+        deleteBtn.addEventListener('click', this.deleteEvent);
         
-        this.closeAddEventWindow(this.id);
+        this.closeAddEventWindow(this.dayId);
+        // console.dir(eventEl);
+        console.log(this.eventIdNum);
+    }
+
+    deleteEvent = () => {
+        
     }
 }
 

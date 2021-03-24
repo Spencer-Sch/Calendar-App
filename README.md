@@ -18,5 +18,9 @@ Day 2
     * complted logic where activating a modal, while a modal is currently open on another day, will close the previous modal and open a modal on the newly selected day.
 
 Day 3
-* changed 'modal' to 'addEventWindow' for more accurate description.
+* Changed 'modal' to 'addEventWindow' for more accurate description.
 * Added functinality to insert event elements into each calendar day.
+
+Day 4
+* Added trash can icon to use as a 'delete event' button to each created event element.
+* started work on 'delete event' functionality.

@@ -16,7 +16,8 @@ h1 {
 }
 
 h3 {
-    margin: 0.5em;
+    /* margin-top: 0.5em;
+    margin-bottom: 0.5em; */
 }
 
 #wrapper {
@@ -141,8 +142,11 @@ h3 {
 }
 
 .event-li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 0.3em;
+    padding: 0.5em;
     border-bottom: solid 2px lightpink;
 }
 
@@ -152,4 +156,12 @@ h3 {
 
 .event-li:hover {
     background-color: lightpink;
+}
+
+#delete-icon {
+    cursor: pointer;
+}
+
+#delete-icon:hover {
+    background-color:white;
 }
