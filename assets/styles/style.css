@@ -37,7 +37,7 @@ h3 {
     background-color:oldlace;
 }
 
-.modal {
+.add-event-window {
     display: block;
     z-index: 100;
     border: solid 1px black;
@@ -47,7 +47,7 @@ h3 {
     margin: 0.4em auto;
 }
 
-.modal-sub-div {
+.add-event-window-sub-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +69,7 @@ h3 {
     margin-bottom: 0.2em;
 }
 
-.modal-button {
+.add-event-window-button {
     width: 100%;
     margin-top: 0.2em;
     margin-bottom: 0.2em;

@@ -16,3 +16,7 @@ Day 2
     * completed logic so that clicking a day will close a currently rendered modal under that day.
     * completed logic so only one modal can be rendered at a time.
     * complted logic where activating a modal, while a modal is currently open on another day, will close the previous modal and open a modal on the newly selected day.
+
+Day 3
+* changed 'modal' to 'addEventWindow' for more accurate description.
+* Added functinality to insert event elements into each calendar day.
