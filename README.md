@@ -24,3 +24,6 @@ Day 3
 Day 4
 * Added trash can icon to use as a 'delete event' button to each created event element.
 * started work on 'delete event' functionality.
+
+Day 5
+* Worked on potential solutions to issue with 'delete event' functionallity. Needs more work.
