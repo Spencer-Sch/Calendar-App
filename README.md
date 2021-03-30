@@ -27,3 +27,7 @@ Day 4
 
 Day 5
 * Worked on potential solutions to issue with 'delete event' functionallity. Needs more work.
+
+Day 6
+* Created method for deleting events.  It's not exactly what I want but delete functions are not the main focus of this practice project.
+* Started work on creating a full week of CalendarDay objects with the CalendarDay class.

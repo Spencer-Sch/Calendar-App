@@ -1,5 +1,6 @@
 let addEventWindowOpen = false;
 let addEventWindowId;
+let idSuffix = 1;
 
 class CalendarDay {
     constructor(dayName, dayNum, monthName, year) {
@@ -88,32 +89,34 @@ class CalendarDay {
 class CalendarEvent extends CalendarDay {
     constructor(dayName, dayNum, monthName, year) {
         super(dayName, dayNum, monthName, year);
+        this.idSuffix = idSuffix;
+        idSuffix++;
     }
 
     renderEventEl(eventName, eventInfo) {
         const eventEl = document.createElement('li');
-        eventEl.id = `${this.dayId}-${this.eventIdNum}`;
+        eventEl.id = `${this.dayId}-${this.idSuffix}`;
         eventEl.className = 'event-li';
         eventEl.innerHTML = `
         <div>
             <h3>${eventName}</h3>
             <p>${eventInfo}</p>
         </div>
-        <div id="delete-icon">
+        <div id="delete-icon-${this.idSuffix}">
             <i class="fas fa-2x fa-trash-alt"></i>
         </div>
         `;
         document.getElementById(`${this.dayId}-event`).appendChild(eventEl);
 
-        const deleteBtn = document.getElementById('delete-icon');
+        const deleteBtn = document.getElementById(`delete-icon-${this.idSuffix}`);
         deleteBtn.addEventListener('click', this.deleteEvent);
-        const eventAddWindow = document.getElementById(`${this.dayId}`);
 
         this.closeAddEventWindow(this.dayId);
     }
 
     deleteEvent = () => {
-        
+        const element = document.getElementById(`${this.dayId}-${this.idSuffix}`);
+        element.remove();
     }
 }
 
@@ -132,22 +135,30 @@ class CalendarWeek {
             'Friday',
             'Saturday',
         ];
+        // this.sundayDayNum = beginingDayNum;
+        // this.month = month;
+        // this.year = year;
+    }
+
+    createWeek(beginingDayNum, month, year) {
+        // for in loop run through each day of this.weekDayNames and create a new CalendarDay for each week name.
+        // this.numOfdaysInWeek may not be necesary.
     }
 
     renderWeekEl() {
         const weekEl = document.createElement('ul');
+        weekEl.className = 'week';
+        weekEl.id = `week-el`;
+        document.getElementById('calendar-body').appendChild(weekEl);
+        // weekEl.innerHTML = ``;
     }
 }
+
+const newWeek = new CalendarWeek();
+newWeek.createWeek('1', 'March', '2021');
 
 const newDay = new CalendarDay('Sunday', '1', 'March', '2021');
 newDay.renderDayEl('March', '2021');
 
 const newDay2 = new CalendarDay('Monday', '2', 'March', '2021');
 newDay2.renderDayEl('March', '2021');
-
-// test for setting up click event on dayEl
-// const dayElement = document.querySelector('.day-label');
-// dayElement.addEventListener('click', newDay.getEventInfo);
-
-// const newEvent = new CalendarEvent('1', 'Sunday', 'March', '2021', 'Party', 'A birthday party for Kalias!' );
-// newEvent.renderEventEl(/*maybe put eventName and eventDesc in here instead */);
