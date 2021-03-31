@@ -31,3 +31,8 @@ Day 5
 Day 6
 * Created method for deleting events.  It's not exactly what I want but delete functions are not the main focus of this practice project.
 * Started work on creating a full week of CalendarDay objects with the CalendarDay class.
+
+Day 7
+* Finished code to generate a full week of day objects.
+
+* That is the end of this app for now.  I got the practice I wanted with classes and OOP and built the functionality I wanted.

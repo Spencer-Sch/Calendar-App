@@ -24,7 +24,8 @@ class CalendarDay {
                 <ul id="${this.dayId}-event" class="event-ul"></ul>
             </div>
         `;
-        document.getElementById('calendar-body').appendChild(dayEl);
+        // document.getElementById('calendar-body').appendChild(dayEl);
+        document.getElementById('week-el').appendChild(dayEl);
 
         const dayElement = document.getElementById(`${this.dayId}-label`);
         dayElement.addEventListener('click', this.renderAddEventWindow);
@@ -102,7 +103,7 @@ class CalendarEvent extends CalendarDay {
             <h3>${eventName}</h3>
             <p>${eventInfo}</p>
         </div>
-        <div id="delete-icon-${this.idSuffix}">
+        <div id="delete-icon-${this.idSuffix}" class="delete-btn">
             <i class="fas fa-2x fa-trash-alt"></i>
         </div>
         `;
@@ -120,12 +121,8 @@ class CalendarEvent extends CalendarDay {
     }
 }
 
-
-
-
 class CalendarWeek {
     constructor() {
-        this.numOfDaysInWeek = 7;
         this.weekDayNames = [
             'Sunday',
             'Monday',
@@ -135,30 +132,30 @@ class CalendarWeek {
             'Friday',
             'Saturday',
         ];
-        // this.sundayDayNum = beginingDayNum;
-        // this.month = month;
-        // this.year = year;
     }
 
-    createWeek(beginingDayNum, month, year) {
-        // for in loop run through each day of this.weekDayNames and create a new CalendarDay for each week name.
-        // this.numOfdaysInWeek may not be necesary.
-    }
-
-    renderWeekEl() {
+    renderWeekEl(beginingDayNum, month, year) {
         const weekEl = document.createElement('ul');
         weekEl.className = 'week';
-        weekEl.id = `week-el`;
+        weekEl.id = 'week-el';
         document.getElementById('calendar-body').appendChild(weekEl);
-        // weekEl.innerHTML = ``;
+
+        let weekDaysArr = [...this.weekDayNames];
+        let dayNum = beginingDayNum;
+
+        for (const day of weekDaysArr) {
+            const newDay = new CalendarDay(day, `${dayNum}`, `${month}`, `${year}`);
+            newDay.renderDayEl();
+            dayNum++;
+        }
     }
 }
 
 const newWeek = new CalendarWeek();
-newWeek.createWeek('1', 'March', '2021');
+newWeek.renderWeekEl('14', 'March', '2021');
 
-const newDay = new CalendarDay('Sunday', '1', 'March', '2021');
-newDay.renderDayEl('March', '2021');
+// const newDay = new CalendarDay('Sunday', '1', 'March', '2021');
+// newDay.renderDayEl('March', '2021');
 
-const newDay2 = new CalendarDay('Monday', '2', 'March', '2021');
-newDay2.renderDayEl('March', '2021');
+// const newDay2 = new CalendarDay('Monday', '2', 'March', '2021');
+// newDay2.renderDayEl('March', '2021');

@@ -36,6 +36,7 @@ h3 {
     width: 95%;
     border: solid 3px black;
     background-color:oldlace;
+    overflow-y: scroll;
 }
 
 .add-event-window {
@@ -109,7 +110,7 @@ h3 {
     height: 20%;
 }
 
-.day {
+.day, .week {
     display: flex;
     flex-direction: column;
     border-bottom: solid lightseagreen 1px;
@@ -158,10 +159,11 @@ h3 {
     background-color: lightpink;
 }
 
-#delete-icon {
+.delete-btn {
     cursor: pointer;
+    padding: 0.15em;
 }
 
-#delete-icon:hover {
-    background-color:white;
+.delete-btn:hover {
+    background-color:lightcyan;
 }
